@@ -14,7 +14,7 @@ dev: install
 	$(PIP) install -e .[dev]
 
 lint:
-	. .venv/bin/activate && ruff check py_containerd
+	. .venv/bin/activate && ruff check containerd_py
 
 test:
 	. .venv/bin/activate && pytest -q
@@ -23,14 +23,14 @@ proto:
 	bash tools/gen_protos.sh
 
 run:
-	. .venv/bin/activate && pyctr --help
+	. .venv/bin/activate && ctr-py --help
 
 daemon:
-	. .venv/bin/activate && py-containerd --listen unix:///run/py-containerd/py-containerd.sock
+	. .venv/bin/activate && containerd-py --listen unix:///run/py-containerd/py-containerd.sock
 
 clean:
 	rm -rf .venv build dist *.egg-info
-	rm -rf py_containerd/api/protos/*_pb2*.py py_containerd/api/protos/*.pyi
+	rm -rf containerd_py/api/protos/*_pb2*.py containerd_py/api/protos/*.pyi
 
 #   Copyright The containerd Authors.
 

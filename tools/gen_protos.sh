@@ -2,11 +2,11 @@
 set -euo pipefail
 
 # Generates Python gRPC code from containerd protobufs vendored under vendor/containerd
-# Output goes to py_containerd/api/protos
+# Output goes to containerd_py/api/protos
 
 ROOT_DIR=$(cd "$(dirname "$0")/.." && pwd)
 VENDOR_DIR="$ROOT_DIR/vendor/containerd"
-OUT_DIR="$ROOT_DIR/py_containerd/api/protos"
+OUT_DIR="$ROOT_DIR/containerd_py/api/protos"
 PROTO_ROOT="$ROOT_DIR/vendor/_proto"
 
 mkdir -p "$OUT_DIR"

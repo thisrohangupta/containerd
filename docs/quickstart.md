@@ -11,14 +11,14 @@ pip install -e .[dev]
 make proto
 
 # Run daemon
-py-containerd --listen unix:///run/py-containerd/py-containerd.sock
+containerd-py --listen unix:///run/py-containerd/py-containerd.sock
 
 # In another shell
-pyctr images pull docker.io/library/busybox:latest
-pyctr containers create docker.io/library/busybox:latest demo
-pyctr tasks start demo
-pyctr ps
-pyctr logs demo
-pyctr tasks kill demo SIGTERM
+ctr-py images pull docker.io/library/busybox:latest
+ctr-py containers create docker.io/library/busybox:latest demo
+ctr-py tasks start demo
+ctr-py ps
+ctr-py logs demo
+ctr-py tasks kill demo SIGTERM
 ```
 

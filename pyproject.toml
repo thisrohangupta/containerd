@@ -3,7 +3,7 @@ requires = ["setuptools>=69", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "py-containerd"
+name = "containerd-py"
 version = "0.1.0"
 description = "Python reimplementation of containerd control plane with gRPC compatibility"
 readme = "README.md"
@@ -37,10 +37,10 @@ dev = [
 ]
 
 [project.scripts]
-pyctr = "py_containerd.cli.main:cli"
-py-containerd = "py_containerd.daemon:main"
+ctr-py = "containerd_py.cli.main:cli"
+containerd-py = "containerd_py.daemon:main"
 
 [tool.setuptools]
 package-dir = {"" = "."}
-packages = ["py_containerd", "py_containerd.cli", "py_containerd.server", "py_containerd.api", "py_containerd.content", "py_containerd.images", "py_containerd.tasks", "py_containerd.state"]
+packages = ["containerd_py", "containerd_py.cli", "containerd_py.server", "containerd_py.api", "containerd_py.content", "containerd_py.images", "containerd_py.tasks", "containerd_py.state"]
 
