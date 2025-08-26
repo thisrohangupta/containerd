@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "py-containerd"
+version = "0.1.0"
+description = "Python reimplementation of containerd control plane with gRPC compatibility"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Apache-2.0" }
+authors = [
+  { name = "py-containerd maintainers" }
+]
+keywords = ["containerd", "oci", "grpc", "containers", "runc"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: Apache Software License",
+  "Operating System :: POSIX :: Linux",
+  "Framework :: AsyncIO",
+]
+dependencies = [
+  "grpcio>=1.63.0",
+  "grpcio-tools>=1.63.0",
+  "protobuf>=5.27.0",
+  "click>=8.1.7",
+  "pyyaml>=6.0.2",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.2.0",
+  "pytest-asyncio>=0.23.8",
+  "mypy>=1.10.0",
+  "ruff>=0.5.0",
+  "types-PyYAML",
+]
+
+[project.scripts]
+pyctr = "py_containerd.cli.main:cli"
+py-containerd = "py_containerd.daemon:main"
+
+[tool.setuptools]
+package-dir = {"" = "."}
+packages = ["py_containerd", "py_containerd.cli", "py_containerd.server", "py_containerd.api", "py_containerd.content", "py_containerd.images", "py_containerd.tasks", "py_containerd.state"]
+

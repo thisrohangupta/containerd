@@ -1,3 +1,37 @@
+PY := . .venv/bin/activate && python
+PIP := . .venv/bin/activate && pip
+
+.PHONY: venv install dev clean lint test proto run daemon
+
+venv:
+	python -m venv .venv
+
+install: venv
+	$(PIP) install -U pip
+	$(PIP) install -e .
+
+dev: install
+	$(PIP) install -e .[dev]
+
+lint:
+	. .venv/bin/activate && ruff check py_containerd
+
+test:
+	. .venv/bin/activate && pytest -q
+
+proto:
+	bash tools/gen_protos.sh
+
+run:
+	. .venv/bin/activate && pyctr --help
+
+daemon:
+	. .venv/bin/activate && py-containerd --listen unix:///run/py-containerd/py-containerd.sock
+
+clean:
+	rm -rf .venv build dist *.egg-info
+	rm -rf py_containerd/api/protos/*_pb2*.py py_containerd/api/protos/*.pyi
+
 #   Copyright The containerd Authors.
 
 #   Licensed under the Apache License, Version 2.0 (the "License");
