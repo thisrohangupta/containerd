@@ -102,7 +102,7 @@ jobs:
             pip install -r tests/requirements.txt
           fi
           # Common libs for gRPC testing containerd:
-          pip install pytest grpcio protobuf
+          pip install pytest grpcio protobuf click
 
       - name: Run Python tests
         env:
